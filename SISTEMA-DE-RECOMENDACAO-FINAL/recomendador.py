@@ -8,10 +8,14 @@ class Recomendador:
         self.usuario_repo = usuario_repo
         self.produto_repo = produto_repo
 
-    def recomendar(self, usuario: Usuario, limite: int = 5):
-        produtos_recomendados = self.produto_repo.obter_produtos_por_genero_ordenados_por_popularidade(2)
+    def recomendar(self, usuario_id: int, limite: int = 2):
+        categoria_mais_frequente = self.usuario_repo.obter_categoria_mais_frequente_do_usuario(usuario_id)
+        print("Categoria mais frequente: ", categoria_mais_frequente)
         
-        print(produtos_recomendados)
+        produtos_recomendados = self.produto_repo.obter_produtos_por_categoria_ordenados_por_popularidade(categoria_mais_frequente, limite)
+        print("Produtos recomendados:", produtos_recomendados)
+
+        return produtos_recomendados
 
 
 

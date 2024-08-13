@@ -59,11 +59,4 @@ usuario_produto_repository.relacionar_usuario_produto(1, 6)
 usuario_produto_repository.relacionar_usuario_produto(1, 7)
 usuario_produto_repository.relacionar_usuario_produto(1, 8)
 
-recomendador.recomendar(novo_usuario)
-
-
-# banco_de_dados.adicionar_usuario(novo_usuario)
-
-# usuario = banco_de_dados.obter_usuario(id=1)
-
-# print(usuario)
+recomendador.recomendar(1)
