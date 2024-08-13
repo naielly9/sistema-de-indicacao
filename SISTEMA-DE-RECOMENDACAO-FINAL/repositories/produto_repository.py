@@ -17,9 +17,10 @@ class ProdutoRepository:
         produto = self.cursor.fetchone()
         return Produto(*produto) if produto else None
     
-    def obter_produtos_por_genero_ordenados_por_popularidade(self, genero_id: int):
+    def obter_produtos_por_categoria_ordenados_por_popularidade(self, genero_id: int, limite: int):
         self.cursor.execute(
-            'SELECT id, nome, popularidade FROM produtos WHERE genero_id = ? ORDER BY popularidade DESC', 
-            (genero_id,)
+            'SELECT id, nome, popularidade, categoria_id FROM produtos WHERE categoria_id = ? ORDER BY popularidade DESC LIMIT ?', 
+            (genero_id, limite)
         )
+        
         return [Produto(*produto) for produto in self.cursor.fetchall()]
